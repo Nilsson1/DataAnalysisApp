@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "DataAnalysisApp": {
+      "commandName": "Project"
+    },
+    "Parameters": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\frede\\source\\repos\\DataAnalysisApp\\DataAnalysisApp\\Data\\login_data.csv\""
+    }
+  }
+}
