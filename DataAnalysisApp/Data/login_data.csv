@@ -5,5 +5,5 @@ user003,2024-11-29 10:02:00,198.51.100.2,Success,-,Phone001,iOS 14,Denmark
 user004,2024-11-29 10:03:00,192.168.1.2,Fail,Account Locked,Desktop002,Windows 10,Denmark
 user005,2024-11-29 10:04:00,203.0.113.6,Success,-,Tablet001,Android 11,Denmark
 user002,2024-11-29 10:05:00,203.0.113.5,Fail,Incorrect Password,Laptop001,macOS 11,Denmark
-user006,2024-11-29 10:06:00,198.51.100.3,Fail,Incorrect Password,Phone002,iOS 14,Denmark
+user006,2024-11-29 10:06:00,198.51.100.3,Fail,Incorrect Password,Desktop998,Windows 11,Denmark
 user007,2024-11-29 10:07:00,203.0.113.7,Success,-,Desktop

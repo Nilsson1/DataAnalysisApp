@@ -37,7 +37,7 @@ namespace DataAnalysisApp.Controllers
             }
         }
 
-        public List<UserData> GetUserHistoryData(string user)
+        public List<LoginData> GetUserHistoryData(string user)
         {
             var config = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
@@ -49,8 +49,8 @@ namespace DataAnalysisApp.Controllers
             using (var reader = new StreamReader(historyFP))
             using (var csv = new CsvReader(reader, config))
             {
-                List<UserData> userHistory = new List<UserData>();
-                foreach (var row in csv.GetRecords<UserData>().ToList())
+                List<LoginData> userHistory = new List<LoginData>();
+                foreach (var row in csv.GetRecords<LoginData>().ToList())
                 {
                     if (row.UserID == user)
                         userHistory.Add(row);

@@ -13,38 +13,30 @@ namespace DataAnalysisApp.Controllers
 
         }
 
-        public TimeSpan CalculateMedian(List<TimeSpan> values)
+        public double GetMean(List<TimeSpan> values)
         {
-            var sortedValues = values.OrderBy(n => n).ToList();
-            int count = sortedValues.Count;
-            if (count % 2 == 0)
-            {
-                return new TimeSpan((sortedValues[count / 2 - 1].Ticks + sortedValues[count / 2].Ticks) / 2);
-            }
-            else
-            {
-                return sortedValues[count / 2];
-            }
+            return values.Average(v => v.Ticks);
         }
 
-        public TimeSpan CalculateStandardDeviation(List<TimeSpan> values)
+        public TimeSpan GetStandardDeviation(List<TimeSpan> values)
         {
-            double meanTicks = values.Average(v => v.Ticks);
-            double sumOfSquares = values.Select(v => Math.Pow(v.Ticks - meanTicks, 2)).Sum();
-            double stdDevTicks = Math.Sqrt(sumOfSquares / (values.Count - 1));
+            double sumOfSquares = values.Select(v => Math.Pow(v.Ticks - GetMean(values), 2)).Sum();
+            double stdDevTicks = Math.Sqrt(sumOfSquares / (values.Count));
             return new TimeSpan(Convert.ToInt64(stdDevTicks));
         }
 
-        public Tuple<TimeSpan, TimeSpan> CalculateConfidenceInterval(List<TimeSpan> values, TimeSpan mean, TimeSpan stdDev, double confidenceLevel)
+        public Tuple<TimeSpan, TimeSpan> GetConfidenceInterval(List<TimeSpan> values)
         {
             int count = values.Count;
-            double criticalValue = 1.96; // Z-value for 95% confidence
-            double marginOfErrorTicks = criticalValue * (stdDev.Ticks / Math.Sqrt(count));
+            TimeSpan mean = new TimeSpan(Convert.ToInt64(GetMean(values)));
+            TimeSpan stdDev = GetStandardDeviation(values);
+            double criticalValue = 1.96;
+            double marginOfErrorTicks = criticalValue * stdDev.Ticks / Math.Sqrt(count);
             TimeSpan marginOfError = new TimeSpan(Convert.ToInt64(marginOfErrorTicks));
             return Tuple.Create(mean - marginOfError, mean + marginOfError);
         }
 
-        public double CalculateZScore(TimeSpan value, TimeSpan mean, TimeSpan stdDev)
+        public double GetZScore(TimeSpan value, TimeSpan mean, TimeSpan stdDev)
         {
             return (value - mean) / stdDev;
         }

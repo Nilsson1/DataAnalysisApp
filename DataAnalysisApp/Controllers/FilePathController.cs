@@ -50,30 +50,6 @@ namespace DataAnalysisApp.Controllers
                 Console.WriteLine("Both files must be CSV files."); 
                 return; 
             }
-
-            /*if (args.Length == 0)
-            {
-                Console.WriteLine("No filepath provided as parameter. Executing using filepath provided in code.");
-            }
-            else
-            {
-                foreach(string param in args) 
-                {
-                    if (!File.Exists(param))
-                    {
-                        Console.WriteLine($"The file at {param} does not exist.");
-                        return;
-                    }
-                    else
-                    {
-                        if (Path.GetExtension(param).ToLower() != ".csv")
-                        {
-                            Console.WriteLine($"The file at {param} is not a CSV file.");
-                            return;
-                        }
-                    }
-                }
-            }*/
         }
     }
 }
